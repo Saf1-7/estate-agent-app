@@ -15,15 +15,28 @@ function App() {
   // Stores what the user types in the search box
   const [searchTerm, setSearchTerm] = useState('')
 
+  // Filters properties using the search text
+  const filteredProperties = properties.filter((property) =>
+    property.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    property.location.toLowerCase().includes(searchTerm.toLowerCase())
+  )
+
   return (
     <div className="container">
       <header>
         <h1>Estate Agent Property Search</h1>
         <p>Find houses and flats that match your needs.</p>
+
+        <input
+        type="text"
+        placeholder="Search by type or location..."
+        value={searchTerm}
+        onChange={(event) => setSearchTerm(event.target.value)}
+       />
       </header>
 
       <section className="property-grid">
-        {properties.map((property) => (
+        {filteredProperties.map((property) => (
           <div className="property-card" key={property.id}>
             <div className="property-image-placeholder">
               No Image Available
