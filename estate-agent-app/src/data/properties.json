@@ -1,0 +1,95 @@
+{
+  "properties": [
+    {
+      "id": "prop1",
+      "type": "House",
+      "bedrooms": 3,
+      "price": 750000,
+      "tenure": "Freehold",
+      "description": "Attractive three bedroom semi-detached family home close to Petts Wood station, schools, shops and woodland.",
+      "location": "Petts Wood Road, Petts Wood, Orpington BR5",
+      "postcode": "BR5",
+      "picture": "images/prop1pic1small.jpg",
+      "url": "properties/prop1.html",
+      "added": { "month": "October", "day": 12, "year": 2022 }
+    },
+    {
+      "id": "prop2",
+      "type": "Flat",
+      "bedrooms": 2,
+      "price": 399995,
+      "tenure": "Freehold",
+      "description": "Modern two bedroom garden flat with open-plan living space and private courtyard garden.",
+      "location": "Crofton Road, Orpington BR6",
+      "postcode": "BR6",
+      "picture": "images/prop2pic1small.jpg",
+      "url": "properties/prop2.html",
+      "added": { "month": "September", "day": 14, "year": 2022 }
+    },
+    {
+      "id": "prop3",
+      "type": "House",
+      "bedrooms": 4,
+      "price": 950000,
+      "tenure": "Freehold",
+      "description": "Large four bedroom detached family house with driveway, garden and spacious living areas.",
+      "location": "Bromley Road, Bromley BR1",
+      "postcode": "BR1",
+      "picture": "images/prop3pic1small.jpg",
+      "url": "properties/prop3.html",
+      "added": { "month": "January", "day": 5, "year": 2023 }
+    },
+    {
+      "id": "prop4",
+      "type": "Flat",
+      "bedrooms": 1,
+      "price": 280000,
+      "tenure": "Leasehold",
+      "description": "One bedroom flat suitable for first-time buyers, close to transport links and local shops.",
+      "location": "High Street, London NW1",
+      "postcode": "NW1",
+      "picture": "images/prop4pic1small.jpg",
+      "url": "properties/prop4.html",
+      "added": { "month": "March", "day": 21, "year": 2023 }
+    },
+    {
+      "id": "prop5",
+      "type": "House",
+      "bedrooms": 2,
+      "price": 525000,
+      "tenure": "Freehold",
+      "description": "Two bedroom terraced house with a modern kitchen, private garden and good transport access.",
+      "location": "Station Road, Beckenham BR3",
+      "postcode": "BR3",
+      "picture": "images/prop5pic1small.jpg",
+      "url": "properties/prop5.html",
+      "added": { "month": "July", "day": 9, "year": 2023 }
+    },
+    {
+      "id": "prop6",
+      "type": "Flat",
+      "bedrooms": 3,
+      "price": 625000,
+      "tenure": "Leasehold",
+      "description": "Spacious three bedroom apartment with balcony, lift access and secure parking.",
+      "location": "Canary Wharf, London E14",
+      "postcode": "E14",
+      "picture": "images/prop6pic1small.jpg",
+      "url": "properties/prop6.html",
+      "added": { "month": "November", "day": 3, "year": 2023 }
+    },
+    {
+      "id": "prop7",
+      "type": "House",
+      "bedrooms": 5,
+      "price": 1250000,
+      "tenure": "Freehold",
+      "description": "Luxury five bedroom family home with large garden, garage and modern interior.",
+      "location": "Richmond Road, Richmond TW9",
+      "postcode": "TW9",
+      "picture": "images/prop7pic1small.jpg",
+      "url": "properties/prop7.html",
+      "added": { "month": "February", "day": 18, "year": 2024 }
+    }
+  ]
+}
