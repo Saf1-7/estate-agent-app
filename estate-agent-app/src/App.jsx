@@ -1,3 +1,6 @@
+// Import the useState hook from React
+import { useState } from 'react'
+
 // Import the JSON data that contains all property information
 import propertyData from './data/properties.json'
 
@@ -5,8 +8,12 @@ import propertyData from './data/properties.json'
 import './App.css'
 
 function App() {
+
   // Store the array of properties from the JSON file
   const properties = propertyData.properties
+
+  // Stores what the user types in the search box
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="container">
