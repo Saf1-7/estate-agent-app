@@ -1,12 +1,10 @@
-// Import React hook, property data and CSS
+// Import React hook, router link, property data and CSS
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import propertyData from '../data/properties.json'
 import '../App.css'
 
-
 function HomePage() {
-
   // Get all properties from the JSON file
   const properties = propertyData.properties
 
@@ -18,11 +16,10 @@ function HomePage() {
   const [minBedrooms, setMinBedrooms] = useState('')
   const [maxBedrooms, setMaxBedrooms] = useState('')
   const [postcode, setPostcode] = useState('')
+  const [sortOption, setSortOption] = useState('')
 
   // Filter the properties based on the selected search options
   const filteredProperties = properties.filter((property) => {
-
-    // Check if the property matches each search option
     const matchesText =
       property.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       property.location.toLowerCase().includes(searchTerm.toLowerCase())
@@ -46,7 +43,6 @@ function HomePage() {
       postcode === '' ||
       property.postcode.toLowerCase().includes(postcode.toLowerCase())
 
-    // Only show properties that match every filter
     return (
       matchesText &&
       matchesType &&
@@ -58,6 +54,23 @@ function HomePage() {
     )
   })
 
+  // Sort the filtered properties
+  const sortedProperties = [...filteredProperties].sort((a, b) => {
+    if (sortOption === 'price-low') {
+      return a.price - b.price
+    }
+
+    if (sortOption === 'price-high') {
+      return b.price - a.price
+    }
+
+    if (sortOption === 'bedrooms-high') {
+      return b.bedrooms - a.bedrooms
+    }
+
+    return 0
+  })
+
   // Clear all search filters
   const resetFilters = () => {
     setSearchTerm('')
@@ -67,13 +80,14 @@ function HomePage() {
     setMinBedrooms('')
     setMaxBedrooms('')
     setPostcode('')
+    setSortOption('')
   }
 
   return (
     <div className="container">
       <header>
-        <h1>Estate Agent Property Search</h1>
-        <p>Find houses and flats that match your needs.</p>
+        <h1>HomeFinder</h1>
+        <p>Find your perfect home today.</p>
 
         {/* Search and filter controls */}
         <div className="filters">
@@ -128,38 +142,54 @@ function HomePage() {
             onChange={(e) => setPostcode(e.target.value)}
           />
 
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+          >
+            <option value="">Sort By</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="bedrooms-high">Bedrooms: High to Low</option>
+          </select>
+
           <button type="button" onClick={resetFilters}>
             Reset Filters
           </button>
         </div>
       </header>
 
-            {/* Display all matching properties */}
-<section className="property-grid">
-  {filteredProperties.map((property) => (
-    <Link
-      to={`/property/${property.id}`}
-      key={property.id}
-      className="property-link"
-    >
-      <div className="property-card">
-        <img
-          src={`/${property.pictures[0]}`}
-          alt={property.location}
-          className="property-image"
-        />
+      {/* Display all matching properties */}
+      <section className="property-grid">
+        {sortedProperties.map((property) => (
+          <Link
+            to={`/property/${property.id}`}
+            key={property.id}
+            className="property-link"
+          >
+            <div className="property-card">
+              <img
+                src={`/${property.pictures[0]}`}
+                alt={property.location}
+                className="property-image"
+              />
 
-        <div className="property-info">
-          <h2>{property.type}</h2>
-          <p>{property.description}</p>
-          <p><strong>Price:</strong> £{property.price}</p>
-          <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
-          <p><strong>Location:</strong> {property.location}</p>
-        </div>
-      </div>
-    </Link>
-  ))}
-</section>
+              <div className="property-info">
+                <h2>{property.type}</h2>
+                <p>{property.description}</p>
+                <p>
+                  <strong>Price:</strong> £{property.price}
+                </p>
+                <p>
+                  <strong>Bedrooms:</strong> {property.bedrooms}
+                </p>
+                <p>
+                  <strong>Location:</strong> {property.location}
+                </p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </section>
     </div>
   )
 }
