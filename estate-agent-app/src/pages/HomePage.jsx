@@ -58,6 +58,17 @@ function HomePage() {
     )
   })
 
+  // Clear all search filters
+  const resetFilters = () => {
+    setSearchTerm('')
+    setPropertyType('Any')
+    setMinPrice('')
+    setMaxPrice('')
+    setMinBedrooms('')
+    setMaxBedrooms('')
+    setPostcode('')
+  }
+
   return (
     <div className="container">
       <header>
@@ -116,33 +127,39 @@ function HomePage() {
             value={postcode}
             onChange={(e) => setPostcode(e.target.value)}
           />
+
+          <button type="button" onClick={resetFilters}>
+            Reset Filters
+          </button>
         </div>
       </header>
 
             {/* Display all matching properties */}
-      <section className="property-grid">
-        {filteredProperties.map((property) => (
-          <Link
-            to={`/property/${property.id}`}
-            key={property.id}
-            className="property-link"
-          >
-            <div className="property-card">
-              <div className="property-image-placeholder">
-                No Image Available
-              </div>
+<section className="property-grid">
+  {filteredProperties.map((property) => (
+    <Link
+      to={`/property/${property.id}`}
+      key={property.id}
+      className="property-link"
+    >
+      <div className="property-card">
+        <img
+          src={`/${property.pictures[0]}`}
+          alt={property.location}
+          className="property-image"
+        />
 
-              <div className="property-info">
-                <h2>{property.type}</h2>
-                <p>{property.description}</p>
-                <p><strong>Price:</strong> £{property.price}</p>
-                <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
-                <p><strong>Location:</strong> {property.location}</p>
-              </div>
-            </div>
-          </Link>
-        ))}
-      </section>
+        <div className="property-info">
+          <h2>{property.type}</h2>
+          <p>{property.description}</p>
+          <p><strong>Price:</strong> £{property.price}</p>
+          <p><strong>Bedrooms:</strong> {property.bedrooms}</p>
+          <p><strong>Location:</strong> {property.location}</p>
+        </div>
+      </div>
+    </Link>
+  ))}
+</section>
     </div>
   )
 }

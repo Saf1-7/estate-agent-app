@@ -9,7 +9,12 @@
       "description": "Attractive three bedroom semi-detached family home close to Petts Wood station, schools, shops and woodland.",
       "location": "Petts Wood Road, Petts Wood, Orpington BR5",
       "postcode": "BR5",
-      "picture": "images/prop1pic1small.jpg",
+      "pictures": [
+        "images/prop1pic1small.png",
+        "images/prop1pic2small.png",
+        "images/prop1pic3small.png",
+        "images/prop1pic4small.png"
+      ],
       "url": "properties/prop1.html",
       "added": { "month": "October", "day": 12, "year": 2022 }
     },
@@ -22,7 +27,12 @@
       "description": "Modern two bedroom garden flat with open-plan living space and private courtyard garden.",
       "location": "Crofton Road, Orpington BR6",
       "postcode": "BR6",
-      "picture": "images/prop2pic1small.jpg",
+      "pictures": [
+        "images/prop2pic1small.png",
+        "images/prop2pic2small.png",
+        "images/prop2pic3small.png",
+        "images/prop2pic4small.png"
+      ],    
       "url": "properties/prop2.html",
       "added": { "month": "September", "day": 14, "year": 2022 }
     },
@@ -35,7 +45,12 @@
       "description": "Large four bedroom detached family house with driveway, garden and spacious living areas.",
       "location": "Bromley Road, Bromley BR1",
       "postcode": "BR1",
-      "picture": "images/prop3pic1small.jpg",
+      "pictures": [
+        "images/prop3pic1small.png",
+        "images/prop3pic2small.png",
+        "images/prop3pic3small.png",
+        "images/prop3pic4small.png"
+      ],
       "url": "properties/prop3.html",
       "added": { "month": "January", "day": 5, "year": 2023 }
     },
@@ -48,7 +63,12 @@
       "description": "One bedroom flat suitable for first-time buyers, close to transport links and local shops.",
       "location": "High Street, London NW1",
       "postcode": "NW1",
-      "picture": "images/prop4pic1small.jpg",
+      "pictures": [
+        "images/prop4pic1small.png",
+        "images/prop4pic2small.png",
+        "images/prop4pic3small.png",
+        "images/prop4pic4small.png"
+      ],
       "url": "properties/prop4.html",
       "added": { "month": "March", "day": 21, "year": 2023 }
     },
@@ -61,7 +81,12 @@
       "description": "Two bedroom terraced house with a modern kitchen, private garden and good transport access.",
       "location": "Station Road, Beckenham BR3",
       "postcode": "BR3",
-      "picture": "images/prop5pic1small.jpg",
+      "pictures": [
+        "images/prop5pic1small.png",
+        "images/prop5pic2small.png",
+        "images/prop5pic3small.png",
+        "images/prop5pic4small.png"
+      ],  
       "url": "properties/prop5.html",
       "added": { "month": "July", "day": 9, "year": 2023 }
     },
@@ -74,7 +99,12 @@
       "description": "Spacious three bedroom apartment with balcony, lift access and secure parking.",
       "location": "Canary Wharf, London E14",
       "postcode": "E14",
-      "picture": "images/prop6pic1small.jpg",
+      "pictures": [
+        "images/prop6pic1small.png",
+        "images/prop6pic2small.png",
+        "images/prop6pic3small.png",
+        "images/prop6pic4small.png"
+      ],
       "url": "properties/prop6.html",
       "added": { "month": "November", "day": 3, "year": 2023 }
     },
@@ -87,7 +117,12 @@
       "description": "Luxury five bedroom family home with large garden, garage and modern interior.",
       "location": "Richmond Road, Richmond TW9",
       "postcode": "TW9",
-      "picture": "images/prop7pic1small.jpg",
+      "pictures": [
+        "images/prop7pic1small.png",
+        "images/prop7pic2small.png",
+        "images/prop7pic3small.png",
+        "images/prop7pic4small.png"
+      ], 
       "url": "properties/prop7.html",
       "added": { "month": "February", "day": 18, "year": 2024 }
     }
