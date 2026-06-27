@@ -79,3 +79,17 @@ header {
   justify-content: center;
   gap: 10px;
 }
+
+/* Remove the default blue link styling */
+.property-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #003366;
+}
