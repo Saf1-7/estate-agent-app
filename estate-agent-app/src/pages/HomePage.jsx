@@ -17,6 +17,8 @@ function HomePage() {
   const [maxBedrooms, setMaxBedrooms] = useState('')
   const [postcode, setPostcode] = useState('')
   const [sortOption, setSortOption] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
 
   // Filter the properties based on the selected search options
   const filteredProperties = properties.filter((property) => {
@@ -43,6 +45,15 @@ function HomePage() {
       postcode === '' ||
       property.postcode.toLowerCase().includes(postcode.toLowerCase())
 
+    // Check if the property was added within the selected dates
+    const propertyDate = new Date(
+      `${property.added.month} ${property.added.day}, ${property.added.year}`
+    )
+
+    const matchesDate =
+      (startDate === '' || propertyDate >= new Date(startDate)) &&
+      (endDate === '' || propertyDate <= new Date(endDate))
+
     return (
       matchesText &&
       matchesType &&
@@ -50,7 +61,8 @@ function HomePage() {
       matchesMaxPrice &&
       matchesMinBedrooms &&
       matchesMaxBedrooms &&
-      matchesPostcode
+      matchesPostcode &&
+      matchesDate
     )
   })
 
@@ -81,6 +93,8 @@ function HomePage() {
     setMaxBedrooms('')
     setPostcode('')
     setSortOption('')
+    setStartDate('')
+    setEndDate('')
   }
 
   return (
@@ -140,6 +154,18 @@ function HomePage() {
             placeholder="Postcode"
             value={postcode}
             onChange={(e) => setPostcode(e.target.value)}
+          />
+
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
           />
 
           <select
