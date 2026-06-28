@@ -150,3 +150,43 @@ header {
 .filters button:hover {
   background-color: #00509e;
 }
+
+/* Responsive layout for tablets and phones */
+@media (max-width: 768px) {
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filters input,
+  .filters select,
+  .filters button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .property-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .property-card {
+    width: 100%;
+  }
+
+  .thumbnail-gallery {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .property-detail-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .favourites {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
