@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "react-router-dom": "^7.18.0",
-    "react-tabs": "^6.1.1"
+    "react-router-dom": "^7.18.0"
   }
 }

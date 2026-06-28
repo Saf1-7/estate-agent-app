@@ -19,6 +19,7 @@ function HomePage() {
   const [sortOption, setSortOption] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
+  const [favourites, setFavourites] = useState([])
 
   // Filter the properties based on the selected search options
   const filteredProperties = properties.filter((property) => {
@@ -45,7 +46,6 @@ function HomePage() {
       postcode === '' ||
       property.postcode.toLowerCase().includes(postcode.toLowerCase())
 
-    // Check if the property was added within the selected dates
     const propertyDate = new Date(
       `${property.added.month} ${property.added.day}, ${property.added.year}`
     )
@@ -68,18 +68,9 @@ function HomePage() {
 
   // Sort the filtered properties
   const sortedProperties = [...filteredProperties].sort((a, b) => {
-    if (sortOption === 'price-low') {
-      return a.price - b.price
-    }
-
-    if (sortOption === 'price-high') {
-      return b.price - a.price
-    }
-
-    if (sortOption === 'bedrooms-high') {
-      return b.bedrooms - a.bedrooms
-    }
-
+    if (sortOption === 'price-low') return a.price - b.price
+    if (sortOption === 'price-high') return b.price - a.price
+    if (sortOption === 'bedrooms-high') return b.bedrooms - a.bedrooms
     return 0
   })
 
@@ -95,6 +86,15 @@ function HomePage() {
     setSortOption('')
     setStartDate('')
     setEndDate('')
+  }
+
+  // Add a property to favourites without duplicates
+  const addToFavourites = (property) => {
+    const alreadyAdded = favourites.some((fav) => fav.id === property.id)
+
+    if (!alreadyAdded) {
+      setFavourites([...favourites, property])
+    }
   }
 
   return (
@@ -184,6 +184,71 @@ function HomePage() {
         </div>
       </header>
 
+      {/* Favourite properties */}
+      <div
+        className="favourites"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          const propertyId = e.dataTransfer.getData('propertyId')
+
+          const selectedProperty = properties.find(
+            (property) => property.id === propertyId
+          )
+
+          if (selectedProperty) {
+            addToFavourites(selectedProperty)
+          }
+        }}
+      >
+        <h2>Favourite Properties</h2>
+
+        {favourites.length === 0 ? (
+          <p>No favourites added.</p>
+        ) : (
+          favourites.map((property) => (
+            <div
+              className="favourite-item"
+              key={property.id}
+              draggable
+              onDragStart={(e) => {
+                e.dataTransfer.setData('removeFavouriteId', property.id)
+              }}
+            >
+              <p>{property.type}</p>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setFavourites(
+                    favourites.filter((fav) => fav.id !== property.id)
+                  )
+                }
+              >
+                Remove
+              </button>
+            </div>
+          ))
+        )}
+      </div>
+
+      <div
+        className="remove-drop-area"
+        onDragOver={(e) => e.preventDefault()}
+        onDrop={(e) => {
+          const propertyId = e.dataTransfer.getData('removeFavouriteId')
+
+          setFavourites(
+            favourites.filter((fav) => fav.id !== propertyId)
+          )
+        }}
+      >
+        Drop here to remove favourite
+      </div>
+
+      <button type="button" onClick={() => setFavourites([])}>
+        Clear Favourites
+      </button>
+
       {/* Display all matching properties */}
       <section className="property-grid">
         {sortedProperties.map((property) => (
@@ -192,7 +257,13 @@ function HomePage() {
             key={property.id}
             className="property-link"
           >
-            <div className="property-card">
+            <div
+              className="property-card"
+              draggable
+              onDragStart={(e) => {
+                e.dataTransfer.setData('propertyId', property.id)
+              }}
+            >
               <img
                 src={`/${property.pictures[0]}`}
                 alt={property.location}
@@ -212,6 +283,16 @@ function HomePage() {
                   <strong>Location:</strong> {property.location}
                 </p>
               </div>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault()
+                  addToFavourites(property)
+                }}
+              >
+                Add to Favourites
+              </button>
             </div>
           </Link>
         ))}
